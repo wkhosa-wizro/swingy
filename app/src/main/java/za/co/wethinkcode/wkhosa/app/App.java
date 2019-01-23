@@ -1,5 +1,6 @@
 package za.co.wethinkcode.wkhosa.app;
 
+import java.util.Scanner;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerDisplay;
 import za.co.wethinkcode.wkhosa.app.model.GameCharacter;
 import za.co.wethinkcode.wkhosa.app.model.Stats;
@@ -18,14 +19,18 @@ public class App
         int level = 1;
         String type = "BadCop";
         Stats stats = new Stats(level, type);
+        Scanner sc = new Scanner(System.in);
+        String userInput = "";
         
         hero.setStats(stats);
-        
         ControllerDisplay controllerDisplay = new ControllerDisplay(
                                         consoleView, hero);
         
-        controllerDisplay.updateView();
-        System.out.println( "Hello World!" );
-        controllerDisplay.showStats(hero.getStats().toString());
+        while (!userInput.equalsIgnoreCase("Q")) {
+            controllerDisplay.updateView();
+            controllerDisplay.showStats(hero.getStats().toString());
+            System.out.println(">>>>> waiting for user input");
+            userInput = sc.nextLine();
+        }
     }
 }
