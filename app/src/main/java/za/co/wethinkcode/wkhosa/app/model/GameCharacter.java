@@ -25,6 +25,10 @@ public class GameCharacter {
     @Getter @Setter(AccessLevel.PUBLIC)
     protected String type;
     
+    @Getter @Setter(AccessLevel.PUBLIC)
+    private Stats stats;
+
+    
 //    @Getter @Setter(AccessLevel.PUBLIC)
 //    private Helm helm;
 //

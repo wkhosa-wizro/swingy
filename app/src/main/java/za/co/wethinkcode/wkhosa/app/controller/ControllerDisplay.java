@@ -31,4 +31,8 @@ public class ControllerDisplay {
    public void updateView() {
        consoleView.viewGameDetails();
    }
+
+    public void showStats(String stats) {
+        System.out.println(stats);
+    }
 }
