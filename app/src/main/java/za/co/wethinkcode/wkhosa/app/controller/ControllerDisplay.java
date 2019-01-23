@@ -29,7 +29,9 @@ public class ControllerDisplay {
    }
    
    public void updateView() {
-       consoleView.viewGameDetails();
+       consoleView.viewGameDetails(hero.getName(),
+                        hero.getPosition().toString(),
+                        Integer.toString(hero.getStats().getMapSize()));
    }
 
     public void showStats(String stats) {

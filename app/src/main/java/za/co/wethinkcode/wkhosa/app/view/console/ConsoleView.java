@@ -10,11 +10,11 @@ package za.co.wethinkcode.wkhosa.app.view.console;
  * @author wizro
  */
 public class ConsoleView {
-   public void viewGameDetails() {
+   public void viewGameDetails(String name, String pos, String mapSize) {
        System.out.println("");
-       System.out.println("Hero: ");
-       System.out.println("Position: ");
-       System.out.println("Map Size: ");
+       System.out.println("Hero: " + name);
+       System.out.println("Position: " + pos);
+       System.out.println("Map Size: " + mapSize);
        System.out.println("");
        System.out.println("Mission: [North]" + " <OK> " +
                "[South]" + " <OK> " + "[West]" + " <OK> " +
