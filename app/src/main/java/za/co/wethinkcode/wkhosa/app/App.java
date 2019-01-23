@@ -4,6 +4,7 @@ import java.util.Scanner;
 import za.co.wethinkcode.wkhosa.app.controller.CharacterController;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerDisplay;
 import za.co.wethinkcode.wkhosa.app.model.GameCharacter;
+import za.co.wethinkcode.wkhosa.app.model.Map;
 import za.co.wethinkcode.wkhosa.app.model.Position;
 import za.co.wethinkcode.wkhosa.app.model.Stats;
 import za.co.wethinkcode.wkhosa.app.view.console.ConsoleView;
@@ -30,6 +31,8 @@ public class App
                                         consoleView, hero);
         CharacterController characterController = new 
                                 CharacterController(hero);
+        
+        Map map = new Map(hero);
         
         while (!userInput.equalsIgnoreCase("Q")) {
             controllerDisplay.updateView();

@@ -66,7 +66,15 @@ public class Stats {
         return num * (this.level * 10) + 
                 ((this.level - 1)*(this.level - 1));
     }
-   
+
+    public String getRandomName() {
+        Random rand = new Random();
+        
+        int n = rand.nextInt(names.length);
+        
+        return this.names[n];
+    }
+
     private void goodCopStats() {
         
         Random rand = new Random();
