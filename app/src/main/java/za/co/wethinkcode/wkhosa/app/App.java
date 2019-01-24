@@ -3,7 +3,7 @@ package za.co.wethinkcode.wkhosa.app;
 import java.util.Scanner;
 import za.co.wethinkcode.wkhosa.app.controller.CharacterController;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerDisplay;
-import za.co.wethinkcode.wkhosa.app.model.ControllerFight;
+import za.co.wethinkcode.wkhosa.app.controller.ControllerBattle;
 import za.co.wethinkcode.wkhosa.app.model.GameCharacter;
 import za.co.wethinkcode.wkhosa.app.model.Map;
 import za.co.wethinkcode.wkhosa.app.model.Position;
@@ -34,7 +34,7 @@ public class App
                                 CharacterController(hero);
         
         Map map = new Map(hero);
-        ControllerFight controllerFight = new ControllerFight(map, hero);
+        ControllerBattle controllerBattle = new ControllerBattle(map, hero);
         
         while (!userInput.equalsIgnoreCase("Q")) {
             controllerDisplay.updateView();
@@ -42,7 +42,7 @@ public class App
             System.out.println(">>>>> waiting for user input");
             userInput = sc.nextLine();
             characterController.move(userInput);
-            controllerFight.fight();
+            controllerBattle.fight();
         }
     }
 }

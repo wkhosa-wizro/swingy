@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.co.wethinkcode.wkhosa.app.model;
+package za.co.wethinkcode.wkhosa.app.controller;
 
 import java.util.ArrayList;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import za.co.wethinkcode.wkhosa.app.model.GameCharacter;
+import za.co.wethinkcode.wkhosa.app.model.Map;
 
 /**
  *
  * @author wkhosa
  */
-public class ControllerFight {
+public class ControllerBattle {
     
     @Getter @Setter(AccessLevel.PUBLIC)
     GameCharacter hero;
@@ -22,7 +24,7 @@ public class ControllerFight {
     @Getter @Setter(AccessLevel.PUBLIC)
     Map map;
     
-    public ControllerFight(Map map, GameCharacter hero) {
+    public ControllerBattle(Map map, GameCharacter hero) {
         this.hero = hero;
         this.map = map;
     }
