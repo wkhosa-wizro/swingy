@@ -1,12 +1,9 @@
 package za.co.wethinkcode.wkhosa.app;
 
 import java.util.Scanner;
-import za.co.wethinkcode.wkhosa.app.controller.CharacterController;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerArtifact;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerDisplay;
-import za.co.wethinkcode.wkhosa.app.controller.ControllerBattle;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerEnemy;
-import za.co.wethinkcode.wkhosa.app.controller.ControllerFoundArtifact;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerHero;
 import za.co.wethinkcode.wkhosa.app.model.Artifact;
 import za.co.wethinkcode.wkhosa.app.model.GameCharacter;
@@ -34,8 +31,6 @@ public class App
         hero.setStats(stats);
         hero.setPosition(new Position(0, 0));
 
-        CharacterController characterController = new 
-                                CharacterController(hero);
         
         Map map = new Map(hero);
         
