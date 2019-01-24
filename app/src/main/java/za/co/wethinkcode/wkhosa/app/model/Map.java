@@ -15,11 +15,11 @@ import lombok.Getter;
  */
 public class Map {
  
-    private String [] enemyTypes = {"BadCop", "GoodCop", "CIT",
+    private final String [] enemyTypes = {"BadCop", "GoodCop", "CIT",
                                                 "Buglar"};
     
     @Getter
-    private GameCharacter hero;
+    private final GameCharacter hero;
     
     @Getter
     private static ArrayList<GameCharacter> enemies = new 

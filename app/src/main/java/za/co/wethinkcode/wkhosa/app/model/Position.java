@@ -23,5 +23,14 @@ public class Position {
     public Position(@NotNull int x, @NotNull int y) {
         this.x = x;
         this.y = y;
-    }    
+    }
+
+    public boolean compare(Position b) {
+        
+        if (this.x != b.getX())
+            return false;
+        if (this.y != b.getY())
+            return false;
+        return true;
+    }
 }
