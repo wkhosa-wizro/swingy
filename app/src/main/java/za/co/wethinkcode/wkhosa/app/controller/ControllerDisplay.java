@@ -9,6 +9,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import za.co.wethinkcode.wkhosa.app.model.GameCharacter;
+import za.co.wethinkcode.wkhosa.app.model.Map;
 import za.co.wethinkcode.wkhosa.app.view.console.ConsoleView;
 
 /**
@@ -21,11 +22,16 @@ public class ControllerDisplay {
    
    @Getter @Setter(AccessLevel.PUBLIC) 
    private GameCharacter hero;
+
+   @Getter @Setter(AccessLevel.PUBLIC) 
+   private Map map;
+      
    
-   
-   public ControllerDisplay(ConsoleView consoleView, GameCharacter hero) {
+   public ControllerDisplay(ConsoleView consoleView, Map map, 
+                    GameCharacter hero) {
        this.consoleView = consoleView;
        this.hero = hero;
+       this.map = map;
    }
    
    public void updateView() {
@@ -36,5 +42,21 @@ public class ControllerDisplay {
 
     public void showStats(String stats) {
         System.out.println(stats);
+    }
+    
+    public void foundArtifact() {
+        System.out.println("You have found an Artifact" + 
+                " Do you want ot pick it up [Y/N]");
+    }
+    
+    public void foundEnemy() {
+        
+        System.out.println("You have been ambushed by your worst " +
+                "enemy Will you Fight or Run [F/R]");
+    }
+    
+    public void navigation() {
+        System.out.println("To move in East, West, North, South " +
+                " direction [E/W/N/S]");
     }
 }

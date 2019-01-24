@@ -2,9 +2,13 @@ package za.co.wethinkcode.wkhosa.app;
 
 import java.util.Scanner;
 import za.co.wethinkcode.wkhosa.app.controller.CharacterController;
+import za.co.wethinkcode.wkhosa.app.controller.ControllerArtifact;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerDisplay;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerBattle;
+import za.co.wethinkcode.wkhosa.app.controller.ControllerEnemy;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerFoundArtifact;
+import za.co.wethinkcode.wkhosa.app.controller.ControllerHero;
+import za.co.wethinkcode.wkhosa.app.model.Artifact;
 import za.co.wethinkcode.wkhosa.app.model.GameCharacter;
 import za.co.wethinkcode.wkhosa.app.model.Map;
 import za.co.wethinkcode.wkhosa.app.model.Position;
@@ -29,25 +33,61 @@ public class App
         
         hero.setStats(stats);
         hero.setPosition(new Position(0, 0));
-        ControllerDisplay controllerDisplay = new ControllerDisplay(
-                                        consoleView, hero);
+
         CharacterController characterController = new 
                                 CharacterController(hero);
         
         Map map = new Map(hero);
-        ControllerBattle controllerBattle = new ControllerBattle(map, hero);
-       
-        ControllerFoundArtifact controllerFoundArtifact =
-                new ControllerFoundArtifact(map, hero);
-       
+        
+        GameCharacter tempCharacter;
+        Artifact    tempArtifact;
+
+        ControllerDisplay controllerDisplay;
+        controllerDisplay = new ControllerDisplay(
+                consoleView, map, hero);
+        
+        ControllerArtifact controllerArtifact = new 
+                ControllerArtifact(map, hero);
+
+        ControllerEnemy controllerEnemy = new 
+                ControllerEnemy(map, hero);
+        
+        ControllerHero controllerHero = new 
+                ControllerHero(map, hero);
+
+        
         while (!userInput.equalsIgnoreCase("Q")) {
-            controllerDisplay.updateView();
-            controllerDisplay.showStats(hero.getStats().toString());
-            System.out.println(">>>>> waiting for user input");
+            
+            if ((tempArtifact = controllerArtifact.check()) != null) {
+                controllerDisplay.foundArtifact();
+                userInput = sc.nextLine();
+                controllerArtifact.pick(tempArtifact, userInput);
+            }
+            
+            if ((tempCharacter = controllerEnemy.check()) != null) {
+                controllerDisplay.foundEnemy();
+                userInput = sc.nextLine();
+                controllerEnemy.battle(tempCharacter, userInput);
+              //  controllerMission.update();
+            }
+            
+            
+            controllerDisplay.navigation();
             userInput = sc.nextLine();
-            characterController.move(userInput);
-            controllerBattle.fight();
-            controllerFoundArtifact.pick();
+            controllerHero.move(userInput);
+            controllerDisplay.updateView();
+            //controllerMission.update();
+            
+            
         }
+//        while (!userInput.equalsIgnoreCase("Q")) {
+//            controllerDisplay.updateView();
+//            controllerDisplay.showStats(hero.getStats().toString());
+//            System.out.println(">>>>> waiting for user input");
+//            userInput = sc.nextLine();
+//            characterController.move(userInput);
+//            controllerBattle.fight();
+//            controllerFoundArtifact.pick();
+//        }
     }
 }
