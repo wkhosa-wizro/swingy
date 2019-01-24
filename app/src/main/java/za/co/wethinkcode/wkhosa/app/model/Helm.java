@@ -11,7 +11,7 @@ import lombok.ToString;
  *
  * @author wizro
  */
-@ToString
+
 public class Helm extends Artifact {
     public Helm(String name, Position pos) {
         super(name, pos);

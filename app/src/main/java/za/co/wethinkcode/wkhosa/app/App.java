@@ -4,6 +4,7 @@ import java.util.Scanner;
 import za.co.wethinkcode.wkhosa.app.controller.CharacterController;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerDisplay;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerBattle;
+import za.co.wethinkcode.wkhosa.app.controller.ControllerFoundArtifact;
 import za.co.wethinkcode.wkhosa.app.model.GameCharacter;
 import za.co.wethinkcode.wkhosa.app.model.Map;
 import za.co.wethinkcode.wkhosa.app.model.Position;
@@ -35,7 +36,10 @@ public class App
         
         Map map = new Map(hero);
         ControllerBattle controllerBattle = new ControllerBattle(map, hero);
-        
+       
+        ControllerFoundArtifact controllerFoundArtifact =
+                new ControllerFoundArtifact(map, hero);
+       
         while (!userInput.equalsIgnoreCase("Q")) {
             controllerDisplay.updateView();
             controllerDisplay.showStats(hero.getStats().toString());
@@ -43,6 +47,7 @@ public class App
             userInput = sc.nextLine();
             characterController.move(userInput);
             controllerBattle.fight();
+            controllerFoundArtifact.pick();
         }
     }
 }

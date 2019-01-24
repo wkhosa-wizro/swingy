@@ -11,7 +11,7 @@ import lombok.ToString;
  *
  * @author wizro
  */
-@ToString
+
 public class Armor extends Artifact {
     
     public Armor(String name, Position pos) {
