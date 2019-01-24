@@ -50,10 +50,10 @@ public class ControllerEnemy {
         
         if (action.equalsIgnoreCase("R")) {
             System.out.println("I am running like a coward");
-            
+            Battle.run(hero, enemy);
         }
         else {
-            System.out.println("I am fighting like a hero");
+            System.out.println("I am fighting like a hero\n");
             Battle.fight(hero, enemy);
             if (enemy.getStats().getLive() <= 0) {
                 map.getEnemies().remove(enemy);

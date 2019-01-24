@@ -18,7 +18,6 @@ public class Battle {
 
             int randNum = (int) (1 + Math.random() * 3);
         
-            System.out.println("Random number fight" + randNum);
             
             if (randNum == 1) {
                 enemy.defend(hero.attack());
@@ -29,5 +28,14 @@ public class Battle {
             }
             
         }
+    }
+    
+    public static void run(GameCharacter hero, GameCharacter enemy) {
+
+            int randNum = (int) (1 + Math.random() * 2);
+            
+            if (randNum == 1)
+                Battle.fight(hero, enemy);
+        
     }
 }
