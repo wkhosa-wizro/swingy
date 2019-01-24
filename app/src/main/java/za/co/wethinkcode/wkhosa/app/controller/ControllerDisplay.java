@@ -38,6 +38,9 @@ public class ControllerDisplay {
        consoleView.viewGameDetails(hero.getName(),
                         hero.getPosition().toString(),
                         Integer.toString(hero.getStats().getMapSize()));
+       
+       System.out.println("Map >>> " + map.toString());
+       System.out.println("Hero >>> " + hero.toString());
    }
 
     public void showStats(String stats) {

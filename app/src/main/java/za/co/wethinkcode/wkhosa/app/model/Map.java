@@ -8,20 +8,24 @@ package za.co.wethinkcode.wkhosa.app.model;
 import java.util.ArrayList;
 import java.util.Random;
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  *
  * @author wizro
  */
+@ToString
 public class Map {
  
+    @ToString.Exclude
     private final String [] enemyTypes = {"BadCop", "GoodCop", "CIT",
                                                 "Buglar"};
+    @ToString.Exclude
     private final String [] artifactTypes = {"Helm", "Armor", 
                                                     "Weapons"};
     
 
-    @Getter
+    @Getter @ToString.Exclude
     private final GameCharacter hero;
     
     @Getter

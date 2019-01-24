@@ -28,6 +28,15 @@ public class GameCharacter {
     @Getter @Setter(AccessLevel.PUBLIC)
     private Stats stats;
 
+    @Getter @Setter(AccessLevel.PUBLIC)
+    private Helm helm;
+
+    @Getter @Setter(AccessLevel.PUBLIC)
+    private Armor armor;
+
+    @Getter @Setter(AccessLevel.PUBLIC)
+    private Weapon weapon;
+    
     public void moveToEast() {
         int x = this.position.getX();
         
@@ -60,14 +69,6 @@ public class GameCharacter {
         }
     }
     
-//    @Getter @Setter(AccessLevel.PUBLIC)
-//    private Helm helm;
-//
-//    @Getter @Setter(AccessLevel.PUBLIC)
-//    private Armor armor;
-//
-//    @Getter @Setter(AccessLevel.PUBLIC)
-//    private Weapon weapon;
 //    
 //    @Getter @Setter(AccessLevel.PUBLIC)
 //    private Stats stats;

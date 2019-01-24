@@ -9,9 +9,12 @@ import java.util.ArrayList;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import za.co.wethinkcode.wkhosa.app.model.Armor;
 import za.co.wethinkcode.wkhosa.app.model.Artifact;
 import za.co.wethinkcode.wkhosa.app.model.GameCharacter;
+import za.co.wethinkcode.wkhosa.app.model.Helm;
 import za.co.wethinkcode.wkhosa.app.model.Map;
+import za.co.wethinkcode.wkhosa.app.model.Weapon;
 
 /**
  *
@@ -33,6 +36,8 @@ public class ControllerArtifact {
     public Artifact check() {
         ArrayList<Artifact> artifacts = Map.getArtifacts();
         
+        System.out.println("artifacts >>> " + artifacts.toString());
+        
         for (Artifact found : artifacts) {
             
             if (hero.getPosition().compare(found.getPosition())) {
@@ -47,8 +52,16 @@ public class ControllerArtifact {
     public void pick(Artifact artifact, String choice) {
         
         if (choice.equalsIgnoreCase("Y") || 
-                (choice.toUpperCase()).startsWith("N")) {
+                (choice.toUpperCase()).startsWith("Y")) {
             map.getArtifacts().remove(artifact);
+            if (artifact.getType().equalsIgnoreCase("armor"))
+                hero.setArmor((Armor)(artifact));
+            else if (artifact.getType().equalsIgnoreCase("weapon"))
+                hero.setWeapon((Weapon)artifact);
+            else if (artifact.getType().equalsIgnoreCase("helm"))
+                hero.setHelm((Helm)artifact);
+            else {
+            }            
         }
     }
     

@@ -23,7 +23,7 @@ public abstract class Artifact {
     @Getter @Setter(AccessLevel.PUBLIC)
     protected String type;
 
-    @Getter @Setter(AccessLevel.PUBLIC)
+    @Getter @Setter(AccessLevel.PUBLIC) @ToString.Exclude
     protected Stats stats;
 
     @Getter @Setter(AccessLevel.PUBLIC)
