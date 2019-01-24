@@ -10,6 +10,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import za.co.wethinkcode.wkhosa.app.model.Artifact;
+import za.co.wethinkcode.wkhosa.app.model.Battle;
 import za.co.wethinkcode.wkhosa.app.model.GameCharacter;
 import za.co.wethinkcode.wkhosa.app.model.Map;
 
@@ -32,6 +33,8 @@ public class ControllerEnemy {
     public GameCharacter check() {
         ArrayList<GameCharacter> enemies = Map.getEnemies();
         
+                System.out.println("enemy >>> " + enemies.toString());
+        
         for (GameCharacter found : enemies) {
             
             if (hero.getPosition().compare(found.getPosition())) {
@@ -47,9 +50,14 @@ public class ControllerEnemy {
         
         if (action.equalsIgnoreCase("R")) {
             System.out.println("I am running like a coward");
+            
         }
         else {
             System.out.println("I am fighting like a hero");
+            Battle.fight(hero, enemy);
+            if (enemy.getStats().getLive() <= 0) {
+                map.getEnemies().remove(enemy);
+            }
         }
     }
 }

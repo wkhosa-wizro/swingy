@@ -38,6 +38,9 @@ public class Stats {
 
     @Getter @Setter(AccessLevel.PUBLIC)
     private int mapSize;
+
+    @Getter @Setter(AccessLevel.PUBLIC)
+    private int live = 100;
     
     @ToString.Exclude
     private final String [] names = {"Bra Tiza", "Uncle Betty", "Ta Frank", 

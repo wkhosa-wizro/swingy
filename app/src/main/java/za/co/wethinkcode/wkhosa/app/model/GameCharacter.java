@@ -68,10 +68,15 @@ public class GameCharacter {
             this.position.setY(y - 1);
         }
     }
-    
-//    
-//    @Getter @Setter(AccessLevel.PUBLIC)
-//    private Stats stats;
 
+    public int attack() {
+        return stats.getAttack() * stats.getHitPoints() / (10);
+    }
     
+    public void defend(int attack) {
+        int currentLive = stats.getLive();
+        
+        stats.setLive(currentLive - (attack / stats.getDefense()));
+    }
+ 
 }

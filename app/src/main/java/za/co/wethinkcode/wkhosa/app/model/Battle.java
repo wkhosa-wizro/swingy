@@ -1,0 +1,33 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package za.co.wethinkcode.wkhosa.app.model;
+
+/**
+ *
+ * @author wizro
+ */
+public class Battle {
+    public static void fight(GameCharacter hero, GameCharacter enemy) {
+
+        
+        while ((hero.getStats().getLive() > 0) && 
+                (enemy.getStats().getLive() > 0)) {
+
+            int randNum = (int) (1 + Math.random() * 3);
+        
+            System.out.println("Random number fight" + randNum);
+            
+            if (randNum == 1) {
+                enemy.defend(hero.attack());
+                System.out.println("You are kicking ass");
+            } else {
+                hero.defend(enemy.attack());
+                System.out.println("You are bieng fuckedUp too bad");
+            }
+            
+        }
+    }
+}
