@@ -38,16 +38,20 @@ public class ControllerMission {
         }
         
         if (map.getBorders().size() == 4) {
-            System.out.println("Mission Completed");
+            System.out.println("Mission Completed>>>>");
             int level = hero.getStats().getLevel();
+            
+//            int exp = hero.getStats().getExperience();
+            int nextLevelExp = level * 1000 + 
+                    (int)Math.pow(level - 1 , 2) * 450;
+            if (hero.getStats().getExperience() >= nextLevelExp) {
+                hero.getStats().setLevel(level + 1);
+                System.out.println("Leveling up... wait... >>>>");
+            }
             int mapSize = hero.getStats().getMapSize();
             Position pos = new Position(mapSize / 2, mapSize / 2);
             hero.setPosition(pos);
-            
-//            int exp = hero.getStats().getExperience();
-            
-            hero.getStats().setLevel(level + 1);
-                        
+
             System.out.println("Welcome to new level");
             return true;
         }
@@ -63,7 +67,7 @@ public class ControllerMission {
                map.getBorders().add("WEST");
                int exp = hero.getStats().getExperience();
                int level = hero.getStats().getLevel();
-               hero.getStats().setExperience(exp + level * 200);
+               hero.getStats().setExperience(exp + level * 100);
            }
         }
 
@@ -81,7 +85,7 @@ public class ControllerMission {
                map.getBorders().add("SOUTH");
                int exp = hero.getStats().getExperience();
                int level = hero.getStats().getLevel();
-               hero.getStats().setExperience(exp + level * 200);
+               hero.getStats().setExperience(exp + level * 100);
            }
         }
 
