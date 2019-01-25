@@ -42,6 +42,9 @@ public class Stats {
     @Getter @Setter(AccessLevel.PUBLIC)
     private int live = 100;
     
+    @Getter @Setter(AccessLevel.PUBLIC)
+    private int experience = 0;
+
     @ToString.Exclude
     private final String [] names = {"Bra Tiza", "Uncle Betty", "Ta Frank", 
                 "Malumes", "Cashman", "Docter", "Mawaza", "Boss D"};

@@ -61,24 +61,36 @@ public class ControllerMission {
         if (x == 0) {
            if (!map.getBorders().contains("WEST")) {
                map.getBorders().add("WEST");
+               int exp = hero.getStats().getExperience();
+               int level = hero.getStats().getLevel();
+               hero.getStats().setExperience(exp + level * 200);
            }
         }
 
         if (x == (hero.getStats().getMapSize() - 1)) {
            if (!map.getBorders().contains("EAST")) {
                map.getBorders().add("EAST");
+               int exp = hero.getStats().getExperience();
+               int level = hero.getStats().getLevel();
+               hero.getStats().setExperience(exp + level * 200);
            }
         }
 
         if (y == 0) {
            if (!map.getBorders().contains("SOUTH")) {
                map.getBorders().add("SOUTH");
+               int exp = hero.getStats().getExperience();
+               int level = hero.getStats().getLevel();
+               hero.getStats().setExperience(exp + level * 200);
            }
         }
 
         if (y == (hero.getStats().getMapSize() - 1)) {
            if (!map.getBorders().contains("NORTH")) {
                map.getBorders().add("NORTH");
+               int exp = hero.getStats().getExperience();
+               int level = hero.getStats().getLevel();
+               hero.getStats().setExperience(exp + level * 200);
            }
         }
 
