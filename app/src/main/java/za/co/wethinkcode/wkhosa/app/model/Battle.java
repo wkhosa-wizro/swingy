@@ -21,14 +21,14 @@ public class Battle {
             
             if (randNum != 1) {
                 enemy.defend(hero.attack());
-                System.out.println("You are kicking ass");
+//                System.out.println("You are kicking ass");
                 int exp = hero.getStats().getExperience();
                 int level = hero.getStats().getLevel();
                 hero.getStats().setExperience((int) (exp +
                         Math.pow(10, level)));
             } else {
                 hero.defend(enemy.attack());
-                System.out.println("You are bieng fuckedUp too bad");
+//                System.out.println("You are bieng fuckedUp too bad");
             }
             
         }

@@ -48,8 +48,8 @@ public class Map {
         createEnemies();
         createArtifacts();
         //For debuging 
-        System.out.println("enemies " + enemies.toString());
-        System.out.println("artifact " + artifacts.toString());
+//        System.out.println("enemies " + enemies.toString());
+//        System.out.println("artifact " + artifacts.toString());
     }
     
 //    public void update() {

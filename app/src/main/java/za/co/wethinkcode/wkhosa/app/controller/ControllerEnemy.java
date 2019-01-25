@@ -33,12 +33,12 @@ public class ControllerEnemy {
     public GameCharacter check() {
         ArrayList<GameCharacter> enemies = Map.getEnemies();
         
-                System.out.println("enemy >>> " + enemies.toString());
+//                System.out.println("enemy >>> " + enemies.toString());
         
         for (GameCharacter found : enemies) {
             
             if (hero.getPosition().compare(found.getPosition())) {
-                System.out.println("enemy found ...");
+//                System.out.println("enemy found ...");
                 return found;
             }
         }
@@ -49,11 +49,11 @@ public class ControllerEnemy {
     public void battle(GameCharacter enemy, String action) {
         
         if (action.equalsIgnoreCase("R")) {
-            System.out.println("I am running like a coward");
+//            System.out.println("I am running like a coward");
             Battle.run(hero, enemy);
         }
         else {
-            System.out.println("I am fighting like a hero\n");
+//            System.out.println("I am fighting like a hero\n");
             Battle.fight(hero, enemy);
             if (enemy.getStats().getLive() <= 0) {
                 map.getEnemies().remove(enemy);

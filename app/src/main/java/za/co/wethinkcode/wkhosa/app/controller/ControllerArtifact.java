@@ -36,12 +36,12 @@ public class ControllerArtifact {
     public Artifact check() {
         ArrayList<Artifact> artifacts = Map.getArtifacts();
         
-        System.out.println("artifacts >>> " + artifacts.toString());
+//        System.out.println("artifacts >>> " + artifacts.toString());
         
         for (Artifact found : artifacts) {
             
             if (hero.getPosition().compare(found.getPosition())) {
-                System.out.println("artifact found ...");
+//                System.out.println("artifact found ...");
                 return found;
             }
         }

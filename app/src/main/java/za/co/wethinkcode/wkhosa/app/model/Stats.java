@@ -18,6 +18,8 @@ import java.util.Random;
  */
 @ToString
 public class Stats {
+  
+    @ToString.Exclude
     @Getter @Setter(AccessLevel.PUBLIC)
     private String characterName;
 

@@ -33,12 +33,12 @@ public class ControllerMission {
         
         updateBorders();
         if (hero.getStats().getLive() <= 0) {
-            System.out.println("You have been killed mission failed");
+//            System.out.println("You have been killed mission failed");
             System.exit(0);
         }
         
         if (map.getBorders().size() == 4) {
-            System.out.println("Mission Completed>>>>");
+//            System.out.println("Mission Completed>>>>");
             int level = hero.getStats().getLevel();
             
 //            int exp = hero.getStats().getExperience();
@@ -46,13 +46,13 @@ public class ControllerMission {
                     (int)Math.pow(level - 1 , 2) * 450;
             if (hero.getStats().getExperience() >= nextLevelExp) {
                 hero.getStats().setLevel(level + 1);
-                System.out.println("Leveling up... wait... >>>>");
+//                System.out.println("Leveling up... wait... >>>>");
             }
             int mapSize = hero.getStats().getMapSize();
             Position pos = new Position(mapSize / 2, mapSize / 2);
             hero.setPosition(pos);
 
-            System.out.println("Welcome to new level");
+//            System.out.println("Welcome to new level");
             return true;
         }
         return false;
