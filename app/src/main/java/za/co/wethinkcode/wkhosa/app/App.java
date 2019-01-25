@@ -35,26 +35,10 @@ public class App
         hero.setStats(stats);
 
         Controllers.initLevel(hero);
-        Map map = Controllers.getMap();
         
         GameCharacter tempCharacter;
         Artifact    tempArtifact;
 
-        ControllerDisplay controllerDisplay;
-        controllerDisplay = Controllers.getControllerDisplay();
-        
-        ControllerArtifact controllerArtifact;
-        controllerArtifact = Controllers.getControllerArtifact();
-
-        ControllerEnemy controllerEnemy;
-        controllerEnemy = Controllers.getControllerEnemy();
-        
-        ControllerHero controllerHero;
-        controllerHero = Controllers.getControllerHero();
-
-        ControllerMission controllerMission;
-        controllerMission = Controllers.getControllerMission();
-        
         while (!userInput.equalsIgnoreCase("Q")) {
             
             if ((tempArtifact = Controllers.getControllerArtifact().check())
@@ -84,15 +68,6 @@ public class App
                 Controllers.initLevel(hero);
             
         }
-//        while (!userInput.equalsIgnoreCase("Q")) {
-//            controllerDisplay.updateView();
-//            controllerDisplay.showStats(hero.getStats().toString());
-//            System.out.println(">>>>> waiting for user input");
-//            userInput = sc.nextLine();
-//            characterController.move(userInput);
-//            controllerBattle.fight();
-//            controllerFoundArtifact.pick();
-//        }
     }
     
 
@@ -115,6 +90,9 @@ public class App
         private static Map map;
         @Getter @Setter(AccessLevel.PUBLIC)
         private static ConsoleView consoleView;
+        @Getter @Setter(AccessLevel.PUBLIC)
+        private static GameCharacter hero;
+
         
         public static void initLevel(GameCharacter hero) {
             
@@ -142,6 +120,7 @@ public class App
 
             controllerMission = new 
                 ControllerMission(map, hero);
+            setHero(hero);
                        
         }
     }

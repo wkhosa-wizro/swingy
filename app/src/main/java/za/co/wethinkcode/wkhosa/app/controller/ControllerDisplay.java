@@ -34,34 +34,35 @@ public class ControllerDisplay {
        this.map = map;
    }
    
-   public void updateView() {
+   public String updateView() {
        consoleView.viewGameDetails(hero.getName(),
                         hero.getPosition().toString(),
                         Integer.toString(hero.getStats().getMapSize()));
        
-       System.out.println("Hero >>> " + hero.getStats().toString());
+        return "Hero >>> " + hero.getStats().toString();
 //       for (String s : map.getBorders()) {
 //           System.out.println("Border reached ... " + s);
 //       }
    }
 
-    public void showStats(String stats) {
-        System.out.println(stats);
+    public String showStats(String stats) {
+        return stats;
     }
     
     public void foundArtifact() {
-        System.out.println("You have found an Artifact" + 
+        
+        consoleView.gameView("You have found an Artifact" + 
                 " Do you want ot pick it up [Y/N]");
     }
     
     public void foundEnemy() {
         
-        System.out.println("You have been ambushed by your worst " +
+        consoleView.gameView("You have been ambushed by your worst " +
                 "enemy Will you Fight or Run [F/R]");
     }
     
     public void navigation() {
-        System.out.println("To move in East, West, North, South " +
+        consoleView.gameView("To move in East, West, North, South " +
                 " direction [E/W/N/S]");
     }
 }
