@@ -24,7 +24,7 @@ public class Stats {
     @Getter @Setter(AccessLevel.PUBLIC)
     private String type;
     
-    @Getter @Setter(AccessLevel.PUBLIC)
+    @Getter 
     private int level;
     
     @Getter @Setter(AccessLevel.PUBLIC)
@@ -64,7 +64,11 @@ public class Stats {
     }
     
     //public Stats() {}
-    
+    public void setLevel(int level) {
+        
+        this.level = level;
+        this.mapSize = (this.level - 1) * 5 + 10 - (this.level % 2);
+    }
     private int statsPoint(int num) {
         return num * (this.level * 10) + 
                 ((this.level - 1)*(this.level - 1));

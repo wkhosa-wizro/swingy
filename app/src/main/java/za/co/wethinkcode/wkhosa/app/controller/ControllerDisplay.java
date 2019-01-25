@@ -39,8 +39,10 @@ public class ControllerDisplay {
                         hero.getPosition().toString(),
                         Integer.toString(hero.getStats().getMapSize()));
        
-       System.out.println("Map >>> " + map.toString());
-       System.out.println("Hero >>> " + hero.toString());
+       System.out.println("Hero >>> " + hero.getStats().toString());
+//       for (String s : map.getBorders()) {
+//           System.out.println("Border reached ... " + s);
+//       }
    }
 
     public void showStats(String stats) {

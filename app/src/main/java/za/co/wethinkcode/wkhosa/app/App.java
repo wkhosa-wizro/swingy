@@ -1,10 +1,14 @@
 package za.co.wethinkcode.wkhosa.app;
 
 import java.util.Scanner;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerArtifact;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerDisplay;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerEnemy;
 import za.co.wethinkcode.wkhosa.app.controller.ControllerHero;
+import za.co.wethinkcode.wkhosa.app.controller.ControllerMission;
 import za.co.wethinkcode.wkhosa.app.model.Artifact;
 import za.co.wethinkcode.wkhosa.app.model.GameCharacter;
 import za.co.wethinkcode.wkhosa.app.model.Map;
@@ -29,50 +33,55 @@ public class App
         String userInput = "";
         
         hero.setStats(stats);
-        hero.setPosition(new Position(0, 0));
 
-        
-        Map map = new Map(hero);
+        Controllers.initLevel(hero);
+        Map map = Controllers.getMap();
         
         GameCharacter tempCharacter;
         Artifact    tempArtifact;
 
         ControllerDisplay controllerDisplay;
-        controllerDisplay = new ControllerDisplay(
-                consoleView, map, hero);
+        controllerDisplay = Controllers.getControllerDisplay();
         
-        ControllerArtifact controllerArtifact = new 
-                ControllerArtifact(map, hero);
+        ControllerArtifact controllerArtifact;
+        controllerArtifact = Controllers.getControllerArtifact();
 
-        ControllerEnemy controllerEnemy = new 
-                ControllerEnemy(map, hero);
+        ControllerEnemy controllerEnemy;
+        controllerEnemy = Controllers.getControllerEnemy();
         
-        ControllerHero controllerHero = new 
-                ControllerHero(map, hero);
+        ControllerHero controllerHero;
+        controllerHero = Controllers.getControllerHero();
 
+        ControllerMission controllerMission;
+        controllerMission = Controllers.getControllerMission();
         
         while (!userInput.equalsIgnoreCase("Q")) {
             
-            if ((tempArtifact = controllerArtifact.check()) != null) {
-                controllerDisplay.foundArtifact();
+            if ((tempArtifact = Controllers.getControllerArtifact().check())
+                    != null) {
+                Controllers.getControllerDisplay().foundArtifact();
                 userInput = sc.nextLine();
-                controllerArtifact.pick(tempArtifact, userInput);
+                Controllers.getControllerArtifact().pick(tempArtifact,
+                                        userInput);
             }
             
-            if ((tempCharacter = controllerEnemy.check()) != null) {
-                controllerDisplay.foundEnemy();
+            if ((tempCharacter = Controllers.getControllerEnemy().check()) 
+                    != null) {
+                Controllers.getControllerDisplay().foundEnemy();
                 userInput = sc.nextLine();
-                controllerEnemy.battle(tempCharacter, userInput);
-              //  controllerMission.update();
+                Controllers.getControllerEnemy().battle(tempCharacter,
+                        userInput);
+                if (Controllers.getControllerMission().isMissionComplete())
+                    Controllers.initLevel(hero);
             }
             
             
-            controllerDisplay.navigation();
+            Controllers.getControllerDisplay().navigation();
             userInput = sc.nextLine();
-            controllerHero.move(userInput);
-            controllerDisplay.updateView();
-            //controllerMission.update();
-            
+            Controllers.getControllerHero().move(userInput);
+            Controllers.getControllerDisplay().updateView();
+            if (Controllers.getControllerMission().isMissionComplete())
+                Controllers.initLevel(hero);
             
         }
 //        while (!userInput.equalsIgnoreCase("Q")) {
@@ -84,5 +93,56 @@ public class App
 //            controllerBattle.fight();
 //            controllerFoundArtifact.pick();
 //        }
+    }
+    
+
+    public static class Controllers {
+        
+        @Getter @Setter(AccessLevel.PUBLIC)
+        private static int level = 0;
+        
+        @Getter @Setter(AccessLevel.PUBLIC)
+        private static ControllerDisplay controllerDisplay;
+        @Getter @Setter(AccessLevel.PUBLIC)
+        private static ControllerArtifact controllerArtifact;
+        @Getter @Setter(AccessLevel.PUBLIC)
+        private static ControllerEnemy controllerEnemy;
+        @Getter @Setter(AccessLevel.PUBLIC)
+        private static ControllerHero controllerHero;
+        @Getter @Setter(AccessLevel.PUBLIC)
+        private static ControllerMission controllerMission;
+        @Getter @Setter(AccessLevel.PUBLIC)
+        private static Map map;
+        @Getter @Setter(AccessLevel.PUBLIC)
+        private static ConsoleView consoleView;
+        
+        public static void initLevel(GameCharacter hero) {
+            
+            int mapSize = hero.getStats().getMapSize();
+            hero.setPosition(new Position((mapSize + 1) / 2,
+                                             (mapSize + 1) / 2));
+            
+            
+            map = new Map(hero);
+            
+            
+            consoleView = new ConsoleView();
+            
+            controllerDisplay = new ControllerDisplay(
+                consoleView, map, hero);
+
+             controllerArtifact = new 
+                ControllerArtifact(map, hero);
+
+            controllerEnemy = new 
+                ControllerEnemy(map, hero);
+
+            controllerHero = new 
+                ControllerHero(map, hero);
+
+            controllerMission = new 
+                ControllerMission(map, hero);
+                       
+        }
     }
 }

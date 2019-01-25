@@ -7,7 +7,9 @@ package za.co.wethinkcode.wkhosa.app.model;
 
 import java.util.ArrayList;
 import java.util.Random;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 /**
@@ -24,7 +26,9 @@ public class Map {
     private final String [] artifactTypes = {"Helm", "Armor", 
                                                     "Weapons"};
     
-
+    @ToString.Exclude @Getter @Setter(AccessLevel.PUBLIC)
+    private ArrayList<String> borders = new ArrayList<String>();
+    
     @Getter @ToString.Exclude
     private final GameCharacter hero;
     
@@ -47,6 +51,18 @@ public class Map {
         System.out.println("enemies " + enemies.toString());
         System.out.println("artifact " + artifacts.toString());
     }
+    
+//    public void update() {
+//        artifacts.clear();
+//        enemies.clear();
+//        borders.clear();
+//        createEnemies();
+//        createArtifacts();
+//        //For debuging 
+//        System.out.println("enemies " + enemies.toString());
+//        System.out.println("artifact " + artifacts.toString());
+//        
+//    }
     
     public void createEnemies() {
         

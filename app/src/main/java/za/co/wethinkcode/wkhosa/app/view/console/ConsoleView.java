@@ -5,6 +5,10 @@
  */
 package za.co.wethinkcode.wkhosa.app.view.console;
 
+import java.util.ArrayList;
+import za.co.wethinkcode.wkhosa.app.App;
+import za.co.wethinkcode.wkhosa.app.App.Controllers;
+
 /**
  *
  * @author wizro
@@ -16,8 +20,11 @@ public class ConsoleView {
        System.out.println("Position: " + pos);
        System.out.println("Map Size: " + mapSize);
        System.out.println("");
-       System.out.println("Mission: [North]" + " <OK> " +
-               "[South]" + " <OK> " + "[West]" + " <OK> " +
-               "[East]" + " <OK> ");
+       ArrayList<String> borders = Controllers.getMap().getBorders();
+       System.out.print("Borders Reached :");
+       for (String b : borders) {
+           System.out.print(" <" + b + ">");
+       }
+       System.out.println(" :");
    } 
 }

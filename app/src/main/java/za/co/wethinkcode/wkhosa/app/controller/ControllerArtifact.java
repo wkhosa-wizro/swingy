@@ -54,12 +54,24 @@ public class ControllerArtifact {
         if (choice.equalsIgnoreCase("Y") || 
                 (choice.toUpperCase()).startsWith("Y")) {
             map.getArtifacts().remove(artifact);
-            if (artifact.getType().equalsIgnoreCase("armor"))
+            if (artifact.getType().equalsIgnoreCase("armor")) {
+                
+                int def = hero.getStats().getDefense();
                 hero.setArmor((Armor)(artifact));
-            else if (artifact.getType().equalsIgnoreCase("weapon"))
+                hero.getStats().setDefense(def * 10);
+            }
+            else if (artifact.getType().equalsIgnoreCase("weapon")) {
+                int att = hero.getStats().getAttack();
                 hero.setWeapon((Weapon)artifact);
-            else if (artifact.getType().equalsIgnoreCase("helm"))
+                hero.getStats().setAttack(att * 10);
+            
+            }
+            else if (artifact.getType().equalsIgnoreCase("helm")) {
+                int hit = hero.getStats().getHitPoints();
                 hero.setHelm((Helm)artifact);
+                hero.getStats().setHitPoints(hit * 10);
+                
+            }
             else {
             }            
         }

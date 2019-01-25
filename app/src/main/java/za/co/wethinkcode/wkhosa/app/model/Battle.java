@@ -16,10 +16,10 @@ public class Battle {
         while ((hero.getStats().getLive() > 0) && 
                 (enemy.getStats().getLive() > 0)) {
 
-            int randNum = (int) (1 + Math.random() * 3);
+            int randNum = (int) (1 + Math.random() * 4);
         
             
-            if (randNum == 1) {
+            if (randNum != 1) {
                 enemy.defend(hero.attack());
                 System.out.println("You are kicking ass");
             } else {
